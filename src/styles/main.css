@@ -239,7 +239,7 @@ img {
 }
 
 .card_content .city {
-  font-weight: lighter;
+  font-weight: 400;
   font-size: 0.875rem;
   line-height: 1.5;
   margin-bottom: 1.25rem;
@@ -259,7 +259,7 @@ img {
   font-size: 0.875rem;
   line-height: 1.5;
   margin-bottom: 1.25rem;
-  font-weight: 400;
+  font-weight: 300;
 }
 
 /* Star Style */

@@ -55,7 +55,9 @@ data.restaurants.forEach((restoran) => {
     </div>
     <div class="card_image">
       <img
-        src="${restoran.pictureId}" alt="Gambar ${restoran.name}"
+        src="${restoran.pictureId}" alt="Gambar ${
+    restoran.name
+  }" width="100%" height="230px"
       />
       <div class="overlay">
         <a href="/place/${restoran.id}" class="icon" title="Lihat lebih lanjut">
