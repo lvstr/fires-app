@@ -5,6 +5,13 @@ document.querySelector(".menu-toggle").addEventListener("click", (event) => {
   document.querySelector(".menu-toggle").classList.toggle("is-active");
   event.stopPropagation();
 });
+document.querySelector(".menu-toggle").addEventListener("keypress", (event) => {
+  if (event.key === "Enter") {
+    document.querySelector(".nav").classList.toggle("mobile-nav");
+    document.querySelector(".menu-toggle").classList.toggle("is-active");
+    event.stopPropagation();
+  }
+});
 
 document.querySelector(".nav-item a").addEventListener("click", (event) => {
   document.querySelector(".menu-toggle").classList.remove("is-active");
@@ -29,8 +36,6 @@ document.addEventListener("keydown", (event) => {
   event.stopPropagation();
 });
 
-// Rating
-
 // Catalog List
 
 let rating = [];
@@ -50,10 +55,10 @@ data.restaurants.forEach((restoran) => {
     </div>
     <div class="card_image">
       <img
-        src="${restoran.pictureId}"
+        src="${restoran.pictureId}" alt="Gambar ${restoran.name}"
       />
       <div class="overlay">
-        <a href="/place/${restoran.id}" class="icon" title="View More">
+        <a href="/place/${restoran.id}" class="icon" title="Lihat lebih lanjut">
           <i class="fa fa-eye"></i>
         </a>
       </div>
@@ -63,7 +68,7 @@ data.restaurants.forEach((restoran) => {
       <h4 class="city">${restoran.city}</h4>
       <p class="card_text">
         ${restoran.description.split(" ", 20).join(" ")}
-        <span id="dots">... <a href="/place/${restoran.id}">Read More</a></span>
+        <span id="dots">... <a href="/place/${restoran.id}">Baca</a></span>
       </p>
     </div>
   </div>
@@ -71,6 +76,8 @@ data.restaurants.forEach((restoran) => {
 
   
   `;
+
+  // Rating
 
   rating.push({
     id: restoran.id,

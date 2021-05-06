@@ -23,9 +23,7 @@
   display: grid;
   grid-template-columns: 1fr 3fr;
   align-items: center;
-  height: 90px;
-  padding-top: 20px;
-  padding-bottom: 25px;
+  height: 80px;
   overflow: hidden;
 }
 
@@ -61,6 +59,10 @@
 }
 
 .nav-item a {
+  display: block;
+  min-width: 44px;
+  min-height: 44px;
+  padding-top: 10px;
   color: black;
   font-size: 1.3rem;
   font-weight: 400;

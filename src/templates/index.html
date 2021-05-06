@@ -91,7 +91,9 @@
   </head>
   <body>
     <!-- Skip To Content -->
-    <a href="#list" class="skip-link" tabindex="1">Menuju ke konten</a>
+    <a href="#list" class="skip-link" title="Menuju ke Konten"
+      >Menuju ke Konten</a
+    >
     <!-- Skip To Content -->
     <div class="page-wrapper">
       <!-- NavBar START -->
@@ -102,21 +104,21 @@
             <h3>FiRes</h3>
           </div>
 
-          <div class="menu-toggle" id="mobile-menu">
+          <div class="menu-toggle" id="mobile-menu" tabindex="1">
             <span class="bar"></span>
             <span class="bar"></span>
             <span class="bar"></span>
           </div>
           <ul class="nav">
             <li class="nav-item">
-              <a href="/" tabindex="2">Home</a>
+              <a href="/">Home</a>
             </li>
             <li class="nav-item">
-              <a href="/favorite" tabindex="3">Favorite</a>
+              <a href="/favorite">Favorite</a>
             </li>
             <li class="nav-item">
-              <a href="https://github.com/lvstr" target="_blank" tabindex="4"
-                >About Us</a
+              <a href="https://github.com/lvstr" target="_blank"
+                >Tentang Kami</a
               >
             </li>
           </ul>
@@ -134,13 +136,9 @@
               Kami memberi Restoran terbaik untuk anda!
             </h2>
 
-            <button
-              type="button"
-              class="hero-button"
-              onclick="location.href='#list'"
-            >
-              Cari Restoran &raquo;
-            </button>
+            <div class="button-wrapper">
+              <a href="#list" class="hero-button"> Cari Restoran &raquo; </a>
+            </div>
           </div>
         </section>
         <!-- Hero END -->
@@ -168,10 +166,10 @@
                 <div class="border1"></div>
                 <ul>
                   <a href="/"><li>Home</li></a>
-                  <a href="#list"><li>List</li></a>
+                  <a href="#list"><li>Daftar Restoran</li></a>
                   <a href="/favorite"><li>Favorite</li></a>
                   <a href="https://github.com/lvstr" target="_blank"
-                    ><li>About Us</li></a
+                    ><li>Tentang Kami</li></a
                   >
                 </ul>
               </div>
@@ -187,20 +185,25 @@
                   </li>
                   <li>
                     <i class="fa fa-phone" aria-hidden="true"></i>
-                    <a href="tel:+6285156712795">+6285156712795</a>
+                    <a href="tel:+6285820668826" title="Nomor Telepon"
+                      >+6285820668826</a
+                    >
                   </li>
                   <li>
                     <i class="fa fa-envelope" aria-hidden="true"></i>
-                    <a href="mailto:serankucing@gmail.com"
+                    <a href="mailto:serankucing@gmail.com" title="Email"
                       >serankucing@gmail.com</a
                     >
                   </li>
                 </ul>
 
                 <div class="social-media">
-                  <a href="#"><i class="fa fa-instagram"></i></a>
-                  <a href="#"><i class="fa fa-facebook"></i></a>
-                  <a href="#"><i class="fa fa-google-plus-square"></i></a>
+                  <a
+                    href="https://instagram.com/lvstr_"
+                    title="Akun Instagram"
+                    target="_blank"
+                    ><i class="fa fa-instagram"></i
+                  ></a>
                 </div>
               </div>
             </div>
