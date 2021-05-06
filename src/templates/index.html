@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="apple-touch-icon"
+      sizes="57x57"
+      href="./images/logo/favicon/apple-icon-57x57.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="60x60"
+      href="./images/logo/favicon/apple-icon-60x60.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="72x72"
+      href="./images/logo/favicon/apple-icon-72x72.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="76x76"
+      href="./images/logo/favicon/apple-icon-76x76.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="114x114"
+      href="./images/logo/favicon/apple-icon-114x114.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="120x120"
+      href="./images/logo/favicon/apple-icon-120x120.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="144x144"
+      href="./images/logo/favicon/apple-icon-144x144.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="152x152"
+      href="./images/logo/favicon/apple-icon-152x152.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="./images/logo/favicon/apple-icon-180x180.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="192x192"
+      href="./images/logo/favicon/android-icon-192x192.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/logo/favicon/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="96x96"
+      href="./images/logo/favicon/favicon-96x96.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="./images/logo/favicon/favicon-16x16.png"
+    />
+    <meta name="msapplication-TileColor" content="#ffffff" />
+    <meta
+      name="msapplication-TileImage"
+      content="./images/logo/favicon/ms-icon-144x144.png"
+    />
+    <meta name="theme-color" content="#ffffff" />
+    <title>FiRes - Find Restaurant</title>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- Skip To Content -->
+    <a href="#list" class="skip-link" tabindex="1">Menuju ke konten</a>
+    <!-- Skip To Content -->
+    <div class="page-wrapper">
+      <!-- NavBar START -->
+      <div class="nav-wrapper">
+        <nav class="navbar">
+          <div class="brand">
+            <img src="./images/logo/fires.png" alt="FiRes Logo" />
+            <h3>FiRes</h3>
+          </div>
+
+          <div class="menu-toggle" id="mobile-menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+          </div>
+          <ul class="nav">
+            <li class="nav-item">
+              <a href="/" tabindex="2">Home</a>
+            </li>
+            <li class="nav-item">
+              <a href="/favorite" tabindex="3">Favorite</a>
+            </li>
+            <li class="nav-item">
+              <a href="https://github.com/lvstr" target="_blank" tabindex="4"
+                >About Us</a
+              >
+            </li>
+          </ul>
+        </nav>
+      </div>
+      <!-- NavBar END -->
+
+      <main>
+        <!-- Hero START -->
+        <section class="hero">
+          <div class="hero-content">
+            <h1 class="hero-title">FiRes - Find Restaurant</h1>
+
+            <h2 class="hero-subtitle">
+              Kami memberi Restoran terbaik untuk anda!
+            </h2>
+
+            <button
+              type="button"
+              class="hero-button"
+              onclick="location.href='#list'"
+            >
+              Cari Restoran &raquo;
+            </button>
+          </div>
+        </section>
+        <!-- Hero END -->
+
+        <!-- Content START -->
+        <section>
+          <div class="main">
+            <h2 id="list">Cari Restoran</h2>
+            <ul class="cards" id="restoList"></ul>
+          </div>
+        </section>
+        <!-- Content END -->
+
+        <!-- Footer START -->
+        <footer>
+          <div class="footer">
+            <div class="inner-footer">
+              <div class="footer-items">
+                <h1>FiRes</h1>
+                <p>Kami memberi Restoran terbaik untuk anda!</p>
+              </div>
+
+              <div class="footer-items">
+                <h3>Link Cepat</h3>
+                <div class="border1"></div>
+                <ul>
+                  <a href="/"><li>Home</li></a>
+                  <a href="#list"><li>List</li></a>
+                  <a href="/favorite"><li>Favorite</li></a>
+                  <a href="https://github.com/lvstr" target="_blank"
+                    ><li>About Us</li></a
+                  >
+                </ul>
+              </div>
+
+              <div class="footer-items">
+                <h3>Kontak Kami</h3>
+                <div class="border1"></div>
+                <ul>
+                  <li>
+                    <i class="fa fa-map-marker" aria-hidden="true"></i>Jl
+                    Temanggung Silam, RT 002/RW 004 No 29, Beriwit, Murung,
+                    Murung Raya, Kalimantan Tengah, 73911
+                  </li>
+                  <li>
+                    <i class="fa fa-phone" aria-hidden="true"></i>
+                    <a href="tel:+6285156712795">+6285156712795</a>
+                  </li>
+                  <li>
+                    <i class="fa fa-envelope" aria-hidden="true"></i>
+                    <a href="mailto:serankucing@gmail.com"
+                      >serankucing@gmail.com</a
+                    >
+                  </li>
+                </ul>
+
+                <div class="social-media">
+                  <a href="#"><i class="fa fa-instagram"></i></a>
+                  <a href="#"><i class="fa fa-facebook"></i></a>
+                  <a href="#"><i class="fa fa-google-plus-square"></i></a>
+                </div>
+              </div>
+            </div>
+
+            <!--   Footer Bottom start  -->
+            <div class="footer-bottom">Copyright &copy; FiRes 2021.</div>
+          </div>
+
+          <!--   Footer Bottom end -->
+
+          <!--   FOOTER END -->
+        </footer>
+        <!-- Footer END -->
+      </main>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  </body>
+</html>
