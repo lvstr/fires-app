@@ -262,6 +262,12 @@ img {
   font-weight: 300;
 }
 
+.card_text a {
+  display: inline-block;
+  min-width: 44px;
+  min-height: 44px;
+}
+
 /* Star Style */
 
 .stars-outer {
@@ -347,10 +353,13 @@ img {
 }
 
 .footer ul a {
+  display: inline-block;
   text-decoration: none;
   outline: none;
   color: #fff;
   transition: 0.3s;
+  min-width: 44px;
+  min-height: 44px;
 }
 
 .footer ul a:hover {
