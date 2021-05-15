@@ -3,7 +3,7 @@ import Detail from '../views/pages/detail';
 import Favorite from '../views/pages/favorite';
 
 const routes = {
-    '/': Home, // default page
+    '/': Home,
     '/detail/:id': Detail,
     '/favorite': Favorite,
 };

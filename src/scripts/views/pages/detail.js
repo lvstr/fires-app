@@ -1,8 +1,5 @@
-import RestaurantAPI from '../../data/restaurantAPI-source';
-import {
-    createRestaurantDetailTemplate,
-    ratingTemplate,
-} from '../templates/template-creator';
+import RestaurantAPI from '../../data/restaurant-source';
+import UrlParser from '../../routes/url-parser';
 
 const Detail = {
     async render() {
@@ -15,7 +12,12 @@ const Detail = {
   </div>`;
     },
 
-    async afterRender() {},
+    async afterRender() {
+        const url = UrlParser.parseActiveUrlWithoutCombiner();
+        const restaurant = await RestaurantAPI.detailRestaurant(url.id);
+        const restaurantContainer = document.querySelector('#detailRestaurant');
+        console.log(restaurant);
+    },
 };
 
-export default Home;
+export default Detail;
