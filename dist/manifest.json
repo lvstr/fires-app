@@ -1,0 +1,60 @@
+{
+  "icons": [
+    {
+      "src": "icons/logo/icon_1024x1024.f133741fb09a036db083c4a1024b795c.png",
+      "sizes": "1024x1024",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icons/logo/icon_1024x1024.f133741fb09a036db083c4a1024b795c.png",
+      "sizes": "1024x1024",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icons/logo/icon_512x512.32e207cfd5179918adb8eb79a523c935.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icons/logo/icon_384x384.b19b9c11b16b54ec649a60a0cc2b3e0f.png",
+      "sizes": "384x384",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icons/logo/icon_256x256.624d6b15cc4fea363bd262fe6d5a3316.png",
+      "sizes": "256x256",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icons/logo/icon_192x192.bd494dde3dc31b4fe67fc37fe05105c0.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icons/logo/icon_128x128.c510496f79e4c4c5370fe74f974dde43.png",
+      "sizes": "128x128",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icons/logo/icon_96x96.eb4dd7522f147cbc8d39381cc88804d4.png",
+      "sizes": "96x96",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "name": "Fologue",
+  "short_name": "Fologue",
+  "orientation": "portrait",
+  "display": "standalone",
+  "start_url": "./index.html",
+  "description": "We provide the best restaurant for you!",
+  "theme_color": "#5165f4",
+  "background_color": "#5165f4"
+}
