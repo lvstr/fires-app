@@ -15,9 +15,6 @@ class RestaurantAPI {
             },
             method: 'post',
         });
-        console.log(response);
-        // const responseJson = await response.json();
-        // return responseJson.results;
     }
 
     static async detailRestaurant(id) {

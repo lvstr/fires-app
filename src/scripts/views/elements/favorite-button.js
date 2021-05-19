@@ -11,10 +11,6 @@ class Favorite extends HTMLElement {
         this.render();
     }
 
-    _liked() {
-        return this.getAttribute('liked');
-    }
-
     render() {
         this.innerHTML = `
         <button aria-label="Add this Restaurant to Favorite" id="likeButton" class="like">
@@ -23,6 +19,10 @@ class Favorite extends HTMLElement {
         }" aria-hidden="true"></i>
      </button>
         `;
+    }
+
+    _liked() {
+        return this.getAttribute('liked');
     }
 }
 

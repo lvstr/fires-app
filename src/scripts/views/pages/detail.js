@@ -13,8 +13,7 @@ const Detail = {
         restaurantContainer.classList.add('loader');
         const detailInfo = await this.restaurantApi();
         restaurantContainer.classList.remove('loader');
-        this.renderBreadcrumb(restaurantContainer, detailInfo);
-        //console.log(detailInfo.restaurant);
+        this._renderBreadcrumb(restaurantContainer, detailInfo);
         const detailRestaurant = document.createElement('restaurant-detail');
         detailRestaurant.restaurant = detailInfo.restaurant;
         restaurantContainer.appendChild(detailRestaurant);
@@ -34,9 +33,8 @@ const Detail = {
         });
     },
 
-    renderBreadcrumb(content, detailData) {
+    _renderBreadcrumb(content, detailData) {
         const breadcrumb = document.createElement('breadcrumb-item');
-        breadcrumb.dataset.page = 'Detail';
         breadcrumb.restaurant = detailData.restaurant;
         content.appendChild(breadcrumb);
     },

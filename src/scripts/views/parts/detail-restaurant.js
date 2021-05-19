@@ -10,7 +10,6 @@ class DetailRestaurant extends HTMLElement {
         this._restaurant = restaurant;
         this.render();
         this._tabInitiator();
-
         this._newReview();
     }
     render() {
@@ -36,7 +35,7 @@ class DetailRestaurant extends HTMLElement {
             <div class="info_wrapper">
                 <h3>${this._restaurant.name}</h3>
                 <h5>${this._restaurant.address}, ${this._restaurant.city}</h5>
-                <div class="detail_category">${this._category}</div>
+                <div class="detail_category">${this._category()}</div>
     
                 <div class="detail_description">
                     <h4>About the Place</h4>
@@ -87,12 +86,7 @@ class DetailRestaurant extends HTMLElement {
                             </ul>
                         </div>
                     </div>
-                    
-
-                           ${this._getReview()}             
-
-
-
+                           ${this._review()}
                 </div>
             </div>
         </div>
@@ -105,11 +99,12 @@ class DetailRestaurant extends HTMLElement {
 
     _newReview() {
         const form = this.querySelector('#review_form');
-        form.addEventListener('submit', async function (event) {
+        form.addEventListener('submit', async (event) => {
             event.preventDefault();
-            const formData = new FormData(this);
+            const formData = new FormData(form);
             const entries = formData.entries();
             const data = Object.fromEntries(entries);
+
             try {
                 await RestaurantAPI.addNewReveiw(data);
                 await Swal.fire({
@@ -120,10 +115,17 @@ class DetailRestaurant extends HTMLElement {
                     confirmButtonColor: '#5165f4',
                 }).then((result) => {
                     if (result.isConfirmed) {
-                        location.reload();
+                        const reviewlist_wrapper = this.querySelector(
+                            '.reviewlist_wrapper'
+                        );
+                        const reviewList =
+                            document.createElement('review-comment');
+                        reviewList.review = data;
+                        reviewlist_wrapper.appendChild(reviewList);
                     }
                 });
             } catch (error) {
+                console.log(error);
                 Swal.fire({
                     icon: 'error',
                     title: 'No Internet',
@@ -140,6 +142,7 @@ class DetailRestaurant extends HTMLElement {
         const contents = this.querySelectorAll('.content');
         tabs.onclick = (e) => {
             const id = e.target.dataset.id;
+
             if (id) {
                 tabButton.forEach((btn) => {
                     btn.classList.remove('active');
@@ -152,59 +155,30 @@ class DetailRestaurant extends HTMLElement {
                 const element = document.getElementById(id);
                 element.classList.add('active');
             }
+            const active = e.target.getAttribute('class');
+            if (id === 'reviews' && active.includes('active')) {
+                this._getReview();
+            }
         };
     }
 
-    _getReview() {
+    _review() {
+        const d = new Date();
+        const dtf = new Intl.DateTimeFormat('id', {
+            dateStyle: 'medium',
+        }).format(d);
         return `
         <div class="content" id="reviews">
                       <div class="reviews_wrapper">
-                      <ul>
-                      ${this._restaurant.customerReviews
-                          .map((review) => {
-                              if (review.review != '') {
-                                  return `
-                                  <li>
-                                  <div class="comment_container">
-                                  <div class="comments">
-                                      <div class="card v-card v-sheet elevation-2">
-                                          <div class="header">
-                                              
-                                              <span class="displayName title">${
-                                                  review.name != ''
-                                                      ? review.name
-                                                      : 'No Name'
-                                              }</span>
-                                              <span class="displayName caption">${
-                                                  review.date
-                                              }</span>
-                                          </div>
-                                          <div class="wrapper comment">
-                                              <p>
-                                              ${
-                                                  review.review != ''
-                                                      ? review.review
-                                                      : 'No review'
-                                              }
-                                              </p>
-                                          </div>
-                                      </div>
-                                  </div>
-                              </div>
-                        </li>
-                                  `;
-                              }
-                          })
-                          .join(' ')}
+                      <ul class="reviewlist_wrapper">
                       </ul>
                       <hr />
                       </div>
                       <h3>Add New Review</h3>
                       <form id="review_form" method="post" action="/">
                       <div class="form_input">
-                      <input type="hidden" name="id" value="${
-                          this._restaurant.id
-                      }" />
+                      <input type="hidden" name="id" value="${this._restaurant.id}" />
+                      <input type="hidden" name="date" value="${dtf}" />
                       <label for="name">Name</label>
     <input type="text" id="name" name="name" placeholder="Your name.." required>
 
@@ -217,7 +191,25 @@ class DetailRestaurant extends HTMLElement {
         `;
     }
 
-    get _category() {
+    async _getReview() {
+        const reviewlist_wrapper = this.querySelector('.reviewlist_wrapper');
+        const reviewList = document.createElement('review-comment');
+
+        reviewlist_wrapper.classList.add('loader');
+        const reviewsData = await RestaurantAPI.detailRestaurant(
+            this._restaurant.id
+        );
+        const reviews = reviewsData.restaurant.customerReviews;
+        reviewlist_wrapper.classList.remove('loader');
+        reviews.forEach((review) => {
+            if (review.review != '') {
+                reviewList.review = review;
+                reviewlist_wrapper.appendChild(reviewList.cloneNode(true));
+            }
+        });
+    }
+
+    _category() {
         return this._restaurant.categories
             .map((category) => ` <span class='capsule'>${category.name}</span>`)
             .join(' ');

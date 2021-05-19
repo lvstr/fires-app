@@ -5,11 +5,11 @@ class Star extends HTMLElement {
 
     _calculateStar() {
         const starTotal = 5;
-        const starPercentage = (this.star / starTotal) * 100;
+        const starPercentage = (this._star() / starTotal) * 100;
         return Math.round(starPercentage / 10) * 10;
     }
 
-    get star() {
+    _star() {
         return this.dataset.star;
     }
 
@@ -18,7 +18,7 @@ class Star extends HTMLElement {
             <div class="stars-outer">
                 <div class="stars-inner" style="width: ${this._calculateStar()}%"></div>
                 </div>
-                <div class="rate"><span>${this.star}</span></div>
+                <div class="rate"><span>${this._star()}</span></div>
         `;
     }
 }

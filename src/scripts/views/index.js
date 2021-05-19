@@ -6,3 +6,4 @@ import './elements/star';
 import './elements/restaurant-card';
 import './elements/breadcrumb';
 import './elements/favorite-button';
+import './elements/review-comment';

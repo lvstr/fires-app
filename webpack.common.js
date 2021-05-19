@@ -94,9 +94,57 @@ module.exports = {
                 },
             ],
         }),
-        new WorkboxWebpackPlugin.InjectManifest({
-            swSrc: path.resolve(__dirname, 'src/scripts/sw.js'),
-            swDest: 'sw.js',
+        new WorkboxWebpackPlugin.GenerateSW({
+            clientsClaim: true,
+            skipWaiting: true,
+            runtimeCaching: [
+                {
+                    urlPattern: new RegExp('.+\\.js$'),
+                    options: {
+                        cacheName: 'js-cache',
+                    },
+                    handler: 'StaleWhileRevalidate',
+                },
+                {
+                    urlPattern: new RegExp('.+\\.css$'),
+                    options: {
+                        cacheName: 'css-cache',
+                    },
+                    handler: 'StaleWhileRevalidate',
+                },
+                {
+                    urlPattern: new RegExp(
+                        'https://restaurant-api.dicoding.dev/images/'
+                    ),
+                    options: {
+                        cacheName: 'api-image-cache',
+                    },
+                    handler: 'StaleWhileRevalidate',
+                },
+                {
+                    urlPattern: new RegExp(
+                        'https://restaurant-api.dicoding.dev/list'
+                    ),
+                    options: {
+                        cacheName: 'restaurant-list-cache',
+                    },
+                    handler: 'StaleWhileRevalidate',
+                },
+                {
+                    urlPattern: new RegExp(
+                        'https://restaurant-api.dicoding.dev/detail/'
+                    ),
+                    options: {
+                        cacheName: 'restaurant-detail-cache',
+                    },
+                    handler: 'StaleWhileRevalidate',
+                },
+                {
+                    urlPattern: new RegExp('/.*'),
+                    handler: 'StaleWhileRevalidate',
+                    method: 'GET',
+                },
+            ],
         }),
     ],
 };

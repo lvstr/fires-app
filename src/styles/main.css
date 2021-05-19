@@ -1,6 +1,7 @@
 @font-face {
     font-family: 'BaloBhai2';
     src: url('./font/BalooBhai2-Regular.ttf');
+    font-display: swap;
 }
 
 * {
