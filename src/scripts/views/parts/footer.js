@@ -4,15 +4,15 @@ class Footer extends HTMLElement {
     }
 
     render() {
-        this.innerHTML = `<div class="footer">
+        this.innerHTML = `
         <div class="inner-footer">
             <div class="footer-items">
-                <h1>FiRes</h1>
-                <p>We provide the best restaurant for you!</p>
+                <h1>Fologue</h1>
+                <h2>We provide the best restaurant for you!</h2>
             </div>
 
             <div class="footer-items">
-                <h4>Links</h4>
+                <h3>Links</h3>
                 <div class="border1"></div>
                 <ul>
                     <li><a href="/">Home</a></li>
@@ -30,7 +30,7 @@ class Footer extends HTMLElement {
             </div>
 
             <div class="footer-items">
-                <h4>Contact Us</h4>
+                <h3>Contact Us</h3>
                 <div class="border1"></div>
                 <ul>
                     <li>
@@ -80,9 +80,8 @@ class Footer extends HTMLElement {
 
         <!--   Footer Bottom start  -->
         <div class="footer-bottom">
-            Copyright &copy; FiRes 2021.
-        </div>
-    </div>`;
+            <p>Copyright &copy; Fologue 2021.</p>
+        </div>`;
     }
 }
 

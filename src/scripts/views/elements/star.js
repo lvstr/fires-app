@@ -17,8 +17,8 @@ class Star extends HTMLElement {
         this.innerHTML = `
             <div class="stars-outer">
                 <div class="stars-inner" style="width: ${this._calculateStar()}%"></div>
-            </div>
-            <div class="rate"><span>${this.star}</span></div>
+                </div>
+                <div class="rate"><span>${this.star}</span></div>
         `;
     }
 }

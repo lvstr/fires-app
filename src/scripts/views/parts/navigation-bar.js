@@ -7,13 +7,7 @@ class NavigationBar extends HTMLElement {
         this.innerHTML = `<div class="nav-wrapper">
         <nav class="navbar">
             <div class="brand">
-                <img
-                    src="./images/logo/fires.png"
-                    alt="FiRes Logo"
-                    width="30px"
-                    height="44px"
-                />
-                <h3>FiRes</h3>
+                <h3>Fologue</h3>
             </div>
 
             <button
@@ -30,7 +24,7 @@ class NavigationBar extends HTMLElement {
                     <a href="/">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a href="/favorite">Favorite</a>
+                    <a href="/#/favorite">Favorite</a>
                 </li>
                 <li class="nav-item">
                     <a

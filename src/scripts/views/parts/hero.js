@@ -6,7 +6,7 @@ class Hero extends HTMLElement {
     render() {
         this.innerHTML = `
         <div class="hero-content">
-            <h1 class="hero-title">FiRes - Find Restaurant</h1>
+            <h1 class="hero-title">Fologue</h1>
       
             <h2 class="hero-subtitle">
             We provide the best restaurant for you!

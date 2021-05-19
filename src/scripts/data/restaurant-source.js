@@ -7,8 +7,15 @@ class RestaurantAPI {
         return responseJson.restaurants;
     }
 
-    static async addNewReveiw() {
-        // const response = await fetch(API_ENDPOINT.ADD_NEW_REVIEW);
+    static async addNewReveiw(data) {
+        const response = await fetch(API_ENDPOINT.ADD_NEW_REVIEW, {
+            body: JSON.stringify(data),
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            method: 'post',
+        });
+        console.log(response);
         // const responseJson = await response.json();
         // return responseJson.results;
     }
