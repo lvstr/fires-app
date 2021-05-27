@@ -1,10 +1,10 @@
 class Hero extends HTMLElement {
-    connectedCallback() {
-        this.render();
-    }
+  connectedCallback() {
+    this.render();
+  }
 
-    render() {
-        this.innerHTML = `
+  render() {
+    this.innerHTML = `
         <div class="hero-content">
             <h1 class="hero-title">Fologue</h1>
       
@@ -18,7 +18,7 @@ class Hero extends HTMLElement {
                 </a>
             </div>
         </div>`;
-    }
+  }
 }
 
 customElements.define('hero-section', Hero);

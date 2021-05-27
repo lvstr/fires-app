@@ -1,10 +1,10 @@
 class NavigationBar extends HTMLElement {
-    connectedCallback() {
-        this.render();
-    }
+  connectedCallback() {
+    this.render();
+  }
 
-    render() {
-        this.innerHTML = `<div class="nav-wrapper">
+  render() {
+    this.innerHTML = `<div class="nav-wrapper">
         <nav class="navbar">
             <div class="brand">
                 <h3>Fologue</h3>
@@ -37,7 +37,7 @@ class NavigationBar extends HTMLElement {
             </ul>
         </nav>
     </div>`;
-    }
+  }
 }
 
 customElements.define('navigation-bar', NavigationBar);

@@ -1,14 +1,15 @@
+/* eslint-disable no-underscore-dangle */
 class Breadcrumb extends HTMLElement {
-    /**
+  /**
      * @param {any} restaurant
      */
-    set restaurant(restaurant) {
-        this._restaurant = restaurant;
-        this.render();
-    }
+  set restaurant(restaurant) {
+    this._restaurant = restaurant;
+    this.render();
+  }
 
-    render() {
-        this.innerHTML = `
+  render() {
+    this.innerHTML = `
         <div class='breadcrumb-container'>
         <ol class="cd-breadcrumb" aria-label="breadcrumb">
         <li><a href="/">Home</a></li>
@@ -17,7 +18,7 @@ class Breadcrumb extends HTMLElement {
         </ol>
         </div>
         `;
-    }
+  }
 }
 
 customElements.define('breadcrumb-item', Breadcrumb);

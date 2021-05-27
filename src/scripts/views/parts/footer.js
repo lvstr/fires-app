@@ -1,10 +1,10 @@
 class Footer extends HTMLElement {
-    connectedCallback() {
-        this.render();
-    }
+  connectedCallback() {
+    this.render();
+  }
 
-    render() {
-        this.innerHTML = `
+  render() {
+    this.innerHTML = `
         <div class="inner-footer">
             <div class="footer-items">
                 <h1>Fologue</h1>
@@ -82,7 +82,7 @@ class Footer extends HTMLElement {
         <div class="footer-bottom">
             <p>Copyright &copy; Fologue 2021.</p>
         </div>`;
-    }
+  }
 }
 
 customElements.define('footer-section', Footer);
