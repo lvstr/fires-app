@@ -1,7 +1,10 @@
+/* eslint-disable no-plusplus */
 /* eslint-disable no-underscore-dangle */
 import Swal from 'sweetalert2';
 import CONFIG from '../../globals/config';
 import RestaurantAPI from '../../data/restaurant-source';
+import 'lazysizes';
+import 'lazysizes/plugins/parent-fit/ls.parent-fit';
 
 class DetailRestaurant extends HTMLElement {
   /**
@@ -25,18 +28,18 @@ class DetailRestaurant extends HTMLElement {
         </div>
         <favorite-button></favorite-button>
             <img
-                src="${
+                data- src="${
   `${CONFIG.BASE_IMAGE_URL
   }large/${
     this._restaurant.pictureId}`
 }"
-                alt="${this._restaurant.name}"
+                alt="${this._restaurant.name}" class="lazyload" style="width: 100%; height: 400px"
             />
         </div>
         <div class="detail_content">
             <div class="info_wrapper">
                 <h3>${this._restaurant.name}</h3>
-                <h5>${this._restaurant.address}, ${this._restaurant.city}</h5>
+                <h4 classs="detail_address">${this._restaurant.address}, ${this._restaurant.city}</h4>
                 <div class="detail_category">${this._category()}</div>
     
                 <div class="detail_description">
@@ -65,19 +68,22 @@ class DetailRestaurant extends HTMLElement {
                 <div class="content_wrapper">
                     <div class="content active" id="menus">
                         <div class="menus_container">
-                            <ul class="Foods">
+                            <div class="Foods">
                                 <h4>Foods:</h4>
+                                <ul>
                                 ${this._restaurant.menus.foods
     .map(
       (food) => `
-                                <li>${food.name}</li>
-                                `,
+                                                              <li>${food.name}</li>
+                                                              `,
     )
     .join(' ')}
-                            </ul>
+                                </ul>
+                            </div>
     
-                            <ul class="Drinks">
+                            <div class="Drinks">
                                 <h4>Drinks:</h4>
+                                <ul>
                                 ${this._restaurant.menus.drinks
     .map(
       (drink) => `
@@ -85,7 +91,8 @@ class DetailRestaurant extends HTMLElement {
                                 `,
     )
     .join(' ')}
-                            </ul>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                            ${this._review()}
@@ -194,13 +201,15 @@ class DetailRestaurant extends HTMLElement {
   async _getReview() {
     const reviewlistWrapper = this.querySelector('.reviewlist_wrapper');
     const reviewList = document.createElement('review-comment');
-
-    reviewlistWrapper.classList.add('loader');
+    const reviewSkeleton = document.createElement('skeleton-comment');
+    for (let i = 0; i < 20; i++) {
+      reviewlistWrapper.appendChild(reviewSkeleton.cloneNode(true));
+    }
     const reviewsData = await RestaurantAPI.detailRestaurant(
       this._restaurant.id,
     );
+    reviewlistWrapper.innerHTML = '';
     const reviews = reviewsData.restaurant.customerReviews;
-    reviewlistWrapper.classList.remove('loader');
     reviews.forEach((review) => {
       if (review.review !== '') {
         reviewList.review = review;

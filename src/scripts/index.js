@@ -3,7 +3,7 @@ import '../styles/main.css';
 import '../styles/menu.css';
 import './views/index';
 import 'css-skeletons';
-import '../styles/font/font-awesome-4.7.0/css/font-awesome.min.css';
+import '../styles/fontawesome/css/font-awesome.min.css';
 import swRegister from './utils/sw-register';
 
 import App from './views/app';

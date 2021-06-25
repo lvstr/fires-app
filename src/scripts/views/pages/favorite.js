@@ -4,7 +4,6 @@ import FavoriteRestaurantIdb from '../../data/favorite-restaurants-idb';
 const Favorite = {
   async render() {
     return `
-        <hero-section></hero-section>
              <h2  id="list"></h2>
              <div id="restoList" class="cards"></div>
         `;

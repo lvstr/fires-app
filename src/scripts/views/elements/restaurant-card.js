@@ -1,5 +1,7 @@
 /* eslint-disable no-underscore-dangle */
 import CONFIG from '../../globals/config';
+import 'lazysizes';
+import 'lazysizes/plugins/parent-fit/ls.parent-fit';
 
 class RestaurantCard extends HTMLElement {
   /**
@@ -17,9 +19,9 @@ class RestaurantCard extends HTMLElement {
         <rating-star data-star="${this._restaurant.rating}"></rating-star>
         </div>
         <figure class="card_image">
-        <img src="${
+        <img data-src="${
   `${CONFIG.BASE_IMAGE_URL}small/${this._restaurant.pictureId}`
-}" alt="${this._restaurant.name}" width="100%" height="230px"/>
+}" alt="${this._restaurant.name}" width="100%" height="230px" class="lazyload"/>
         <div class="overlay">
         <a
             href="/#/detail/${this._restaurant.id}"

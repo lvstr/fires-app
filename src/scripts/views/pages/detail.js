@@ -12,9 +12,12 @@ const Detail = {
 
   async afterRender() {
     const restaurantContainer = document.querySelector('#detailRestaurant');
-    restaurantContainer.classList.add('loader');
+    const restaurantHeader = document.querySelector('hero-section');
+    restaurantHeader.remove();
+    const skeletonDetail = document.createElement('skeleton-detail');
+    restaurantContainer.appendChild(skeletonDetail);
     const detailInfo = await this.restaurantApi();
-    restaurantContainer.classList.remove('loader');
+    restaurantContainer.innerHTML = '';
     this._renderBreadcrumb(restaurantContainer, detailInfo);
     const detailRestaurant = document.createElement('restaurant-detail');
     detailRestaurant.restaurant = detailInfo.restaurant;

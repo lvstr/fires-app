@@ -1,4 +1,5 @@
 /* eslint-disable no-underscore-dangle */
+import Swal from 'sweetalert2';
 import FavoriteRestaurantIdb from '../data/favorite-restaurants-idb';
 
 const LikeButtonInitiator = {
@@ -26,7 +27,24 @@ const LikeButtonInitiator = {
     const likeButton = document.querySelector('favorite-button');
     likeButton.setAttribute('liked', 'false');
     likeButton.addEventListener('click', async () => {
-      await FavoriteRestaurantIdb.putRestaurant(this._restaurant);
+      await Swal.fire({
+        icon: 'question',
+        title: 'Add to Favorite?',
+        confirmButtonText: 'Yes',
+        cancelButtonText: 'Cancel',
+        showCancelButton: true,
+        confirmButtonColor: '#5165f4',
+      }).then((result) => {
+        if (result.isConfirmed) {
+          FavoriteRestaurantIdb.putRestaurant(this._restaurant).then(() => {
+            Swal.fire({
+              icon: 'success',
+              title: 'Added to Favorite',
+              confirmButtonText: 'Ok',
+            });
+          });
+        }
+      });
       this._renderButton();
     });
   },
@@ -35,7 +53,25 @@ const LikeButtonInitiator = {
     const likeButton = document.querySelector('favorite-button');
     likeButton.setAttribute('liked', 'true');
     likeButton.addEventListener('click', async () => {
-      await FavoriteRestaurantIdb.deleteRestaurant(this._restaurant.id);
+      await Swal.fire({
+        icon: 'question',
+        title: 'Delete from Favorite?',
+        confirmButtonText: 'Yes',
+        cancelButtonText: 'Cancel',
+        showCancelButton: true,
+        confirmButtonColor: '#5165f4',
+      }).then((result) => {
+        if (result.isConfirmed) {
+          FavoriteRestaurantIdb.deleteRestaurant(this._restaurant.id).then(() => {
+            Swal.fire({
+              icon: 'success',
+              title: 'Deleted from Favorite',
+              confirmButtonText: 'Ok',
+            });
+          });
+        }
+      });
+
       this._renderButton();
     });
   },

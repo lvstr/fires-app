@@ -227,10 +227,10 @@
     .cd-breadcrumb li > * {
         display: inline-block;
         font-size: 1rem;
-        color: #5165f4;
+        color: #001ffb;
         text-decoration: none;
     }
     .cd-breadcrumb li.current > * {
-        color: #8893a4;
+        color: #40464e;
     }
 }

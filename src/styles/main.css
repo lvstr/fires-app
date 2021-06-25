@@ -1,8 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Baloo+Bhai+2&display=swap');
 @font-face {
-    font-family: 'BaloBhai2';
-    src: url('./font/BalooBhai2-Regular.ttf');
+    font-family: "FontAwesome";
+    font-weight: 400;
+    font-style: normal;
+    src: url("./fontawesome/fonts/fontawesome-webfont.woff2") format("woff2");
     font-display: swap;
-}
+  }
 
 * {
     margin: 0;
@@ -60,11 +63,28 @@ hero-section::before {
     left: 0;
     width: 100%;
     height: 100%;
-    background: url('../public/images/heros/hero-image_2.jpg');
+    background: url('../public/images/heros/hero-large.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center center;
     filter: brightness(60%);
+}
+
+@media screen and (min-width: 600px) {
+    hero-section:before{
+        content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('../public/images/heros/hero-small.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    filter: brightness(60%);
+    }
+    
 }
 .hero-content {
     position: relative;
@@ -159,18 +179,18 @@ img {
     padding: 0;
 }
 
-restaurant-item {
+restaurant-item, skeleton-card {
     padding: 1rem;
 }
 
 @media (min-width: 496px) {
-    restaurant-item {
+    restaurant-item, skeleton-card {
         width: 50%;
     }
 }
 
 @media (min-width: 56rem) {
-    restaurant-item {
+    restaurant-item, skeleton-card {
         width: 33.3333%;
     }
 }
@@ -221,6 +241,7 @@ restaurant-item {
 }
 
 .card_image img {
+    object-fit: cover;
     width: 100%;
     min-height: 230px;
     max-height: 230px;
@@ -511,6 +532,11 @@ footer-section li i {
     border-radius: 0 0.75rem 0.75rem 0;
 }
 
+.info_wrapper h4{
+    font-size: 1.2rem !important;
+    font-weight: lighter !important;
+}
+
 @media only screen and (max-width: 423px) {
     .detail_tag {
         font-size: 1.3rem;
@@ -535,10 +561,6 @@ restaurant-detail h3 {
     margin-bottom: 15px;
 }
 
-restaurant-detail h5 {
-    font-size: 1.2rem;
-    font-weight: lighter;
-}
 .detail_category {
     margin-top: 10px;
 }
@@ -566,7 +588,7 @@ restaurant-detail h5 {
 }
 
 .tab_wrapper {
-    margin: 1.9rem 1em;
+    margin-top: 1.9rem;
 }
 
 .button_wrapper {
