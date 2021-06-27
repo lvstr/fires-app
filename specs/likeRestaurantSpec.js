@@ -13,7 +13,20 @@ describe('Liking A Restaurant', () => {
     });
     const likeButton = document.querySelector('favorite-button');
     expect(likeButton.getAttribute('liked'))
-      .toBeTruthy();
+      .toBeFalse();
+  });
+  it('should show the unlike button when the restaurant has not been liked before', async () => {
+    document.body.innerHTML = '<div id="likeButtonContainer"></div>';
+    const likeContainer = document.getElementById('likeButtonContainer');
+    likeContainer.appendChild(document.createElement('favorite-button'));
+    await LikeButtonInitiator.init({
+      restaurant: {
+        id: 1,
+      },
+    });
+    const likeButton = document.querySelector('favorite-button');
+    expect(likeButton.getAttribute('liked'))
+      .toBeTrue();
   });
   it('should be able to like the restaurant', async () => {
     document.body.innerHTML = '<div id="likeButtonContainer"></div>';
@@ -26,9 +39,11 @@ describe('Liking A Restaurant', () => {
     });
     const likeButton = document.querySelector('favorite-button');
     const restaurant = await FavoriteRestaurantIdb.getRestaurant(1);
-
     likeButton.dispatchEvent(new Event('click'));
-    document.querySelector('.swal2-confirm').dispatchEvent(new Event('click'));
+    const confirmButton = document.querySelector('.swal2-confirm');
+    confirmButton.dispatchEvent(new Event('click'));
+    confirmButton.dispatchEvent(new Event('click'));
+    console.log(restaurant);
     expect(restaurant).toEqual({ id: 1 });
   });
   it('should not add a Restaurant again when its already liked', async () => {
@@ -43,6 +58,7 @@ describe('Liking A Restaurant', () => {
     const likeButton = document.querySelector('favorite-button');
     await FavoriteRestaurantIdb.putRestaurant({ id: 1 });
     likeButton.dispatchEvent(new Event('click'));
+    document.querySelector('.swal2-confirm').dispatchEvent(new Event('click'));
     document.querySelector('.swal2-confirm').dispatchEvent(new Event('click'));
     expect(await FavoriteRestaurantIdb.getAllRestaurants()).toEqual([{ id: 1 }]);
     FavoriteRestaurantIdb.deleteRestaurant(1);
