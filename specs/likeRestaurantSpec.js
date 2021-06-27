@@ -56,17 +56,15 @@ describe("Liking A Restaurant", () => {
     ]);
   });
 
-  // Error Test
   it("should not add a restaurant when it has no id", async () => {
+    await FavoriteRestaurantIdb.deleteRestaurant(1);
     await LikeButtonInitiator.init({
       restaurant: {},
     });
     document.querySelector("favorite-button").dispatchEvent(new Event("click"));
 
     expect(await FavoriteRestaurantIdb.getAllRestaurants()).toEqual([]);
-    console.log(await FavoriteRestaurantIdb.getAllRestaurants());
   });
-  // Error Test
 
   it("should not throw error if the unliked movie is not in the list", async () => {
     await LikeButtonInitiator.init({
