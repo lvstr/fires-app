@@ -1,66 +1,82 @@
-import LikeButtonInitiator from '../src/scripts/utils/like-button-initiator';
-import FavoriteRestaurantIdb from '../src/scripts/data/favorite-restaurants-idb';
+import LikeButtonInitiator from "../src/scripts/utils/like-button-initiator";
+import FavoriteRestaurantIdb from "../src/scripts/data/favorite-restaurants-idb";
 
-describe('Liking A Restaurant', () => {
-  it('should show the like button when the restaurant has not been liked before', async () => {
-    document.body.innerHTML = '<div id="likeButtonContainer"></div>';
-    const likeContainer = document.getElementById('likeButtonContainer');
-    likeContainer.appendChild(document.createElement('favorite-button'));
-    await LikeButtonInitiator.init({
-      restaurant: {
-        id: 1,
-      },
-    });
-    const likeButton = document.querySelector('favorite-button');
-    expect(likeButton.getAttribute('liked'))
-      .toBeFalse();
-  });
-  it('should show the unlike button when the restaurant has not been liked before', async () => {
-    document.body.innerHTML = '<div id="likeButtonContainer"></div>';
-    const likeContainer = document.getElementById('likeButtonContainer');
-    likeContainer.appendChild(document.createElement('favorite-button'));
-    await LikeButtonInitiator.init({
-      restaurant: {
-        id: 1,
-      },
-    });
-    const likeButton = document.querySelector('favorite-button');
-    expect(likeButton.getAttribute('liked'))
-      .toBeTrue();
-  });
-  it('should be able to like the restaurant', async () => {
-    document.body.innerHTML = '<div id="likeButtonContainer"></div>';
-    const likeContainer = document.getElementById('likeButtonContainer');
-    likeContainer.appendChild(document.createElement('favorite-button'));
-    await LikeButtonInitiator.init({
-      restaurant: {
-        id: 1,
-      },
-    });
-    const likeButton = document.querySelector('favorite-button');
-    const restaurant = await FavoriteRestaurantIdb.getRestaurant(1);
-    likeButton.dispatchEvent(new Event('click'));
-    const confirmButton = document.querySelector('.swal2-confirm');
-    confirmButton.dispatchEvent(new Event('click'));
-    confirmButton.dispatchEvent(new Event('click'));
-    console.log(restaurant);
-    expect(restaurant).toEqual({ id: 1 });
-  });
-  it('should not add a Restaurant again when its already liked', async () => {
-    document.body.innerHTML = '<div id="likeButtonContainer"></div>';
-    const likeContainer = document.getElementById('likeButtonContainer');
-    likeContainer.appendChild(document.createElement('favorite-button'));
-    await LikeButtonInitiator.init({
-      restaurant: {
-        id: 1,
-      },
-    });
-    const likeButton = document.querySelector('favorite-button');
+const addLikeButton = () => {
+  document.body.innerHTML = '<div id="likeButtonContainer"></div>';
+  document
+    .getElementById("likeButtonContainer")
+    .appendChild(document.createElement("favorite-button"));
+};
+
+describe("Liking A Restaurant", () => {
+  beforeEach(async () => {
+    addLikeButton();
     await FavoriteRestaurantIdb.putRestaurant({ id: 1 });
-    likeButton.dispatchEvent(new Event('click'));
-    document.querySelector('.swal2-confirm').dispatchEvent(new Event('click'));
-    document.querySelector('.swal2-confirm').dispatchEvent(new Event('click'));
-    expect(await FavoriteRestaurantIdb.getAllRestaurants()).toEqual([{ id: 1 }]);
-    FavoriteRestaurantIdb.deleteRestaurant(1);
+  });
+
+  afterEach(async () => {
+    await FavoriteRestaurantIdb.deleteRestaurant(1);
+  });
+
+  it("should show the like button when the restaurant has not been liked before", async () => {
+    await LikeButtonInitiator.init({
+      restaurant: {
+        id: 1,
+      },
+    });
+    expect(document.querySelector("[liked=false]")).toBeTruthy;
+  });
+  it("should not show the unlike button when the restaurant has not been liked before", async () => {
+    await LikeButtonInitiator.init({
+      restaurant: {
+        id: 1,
+      },
+    });
+    expect(document.querySelector("[liked=true]")).toBeFalsy;
+  });
+  it("should be able to like the restaurant", async () => {
+    await LikeButtonInitiator.init({
+      restaurant: {
+        id: 1,
+      },
+    });
+    document.querySelector("favorite-button").dispatchEvent(new Event("click"));
+    expect(await FavoriteRestaurantIdb.getRestaurant(1)).toEqual({ id: 1 });
+  });
+  it("should not add a Restaurant again when its already liked", async () => {
+    await LikeButtonInitiator.init({
+      restaurant: {
+        id: 1,
+      },
+    });
+
+    document.querySelector("favorite-button").dispatchEvent(new Event("click"));
+    expect(await FavoriteRestaurantIdb.getAllRestaurants()).toEqual([
+      { id: 1 },
+    ]);
+  });
+
+  // Error Test
+  it("should not add a restaurant when it has no id", async () => {
+    await LikeButtonInitiator.init({
+      restaurant: {},
+    });
+    document.querySelector("favorite-button").dispatchEvent(new Event("click"));
+
+    expect(await FavoriteRestaurantIdb.getAllRestaurants()).toEqual([]);
+    console.log(await FavoriteRestaurantIdb.getAllRestaurants());
+  });
+  // Error Test
+
+  it("should not throw error if the unliked movie is not in the list", async () => {
+    await LikeButtonInitiator.init({
+      restaurant: {
+        id: 1,
+      },
+    });
+    await FavoriteRestaurantIdb.deleteRestaurant(1);
+    document.querySelector('[liked="true"]').dispatchEvent(new Event("click"));
+
+    expect(await FavoriteRestaurantIdb.getAllRestaurants()).toEqual([]);
   });
 });
