@@ -1,10 +1,10 @@
 /* eslint-disable no-underscore-dangle */
 import Swal from "sweetalert2";
-import FavoriteRestaurantIdb from "../data/favorite-restaurants-idb";
 
 const LikeButtonInitiator = {
-  async init({ restaurant }) {
+  async init({ restaurant, favoriteRestaurant }) {
     this._restaurant = restaurant;
+    this._favoriteRestaurant = favoriteRestaurant;
     await this._renderButton();
   },
 
@@ -15,7 +15,7 @@ const LikeButtonInitiator = {
   },
 
   async _isRestaurantExist(id) {
-    const restaurant = await FavoriteRestaurantIdb.getRestaurant(id);
+    const restaurant = await this._favoriteRestaurant.getRestaurant(id);
     return !!restaurant;
   },
 
@@ -32,7 +32,7 @@ const LikeButtonInitiator = {
         confirmButtonColor: "#5165f4",
       }).then((result) => {
         if (result.isConfirmed) {
-          FavoriteRestaurantIdb.putRestaurant(this._restaurant).then(() => {
+          this._favoriteRestaurant.putRestaurant(this._restaurant).then(() => {
             Swal.fire({
               icon: "success",
               title: "Added to Favorite",
@@ -40,8 +40,8 @@ const LikeButtonInitiator = {
             });
           });
         }
+        this._renderButton();
       });
-      this._renderButton();
     });
   },
 
@@ -58,18 +58,18 @@ const LikeButtonInitiator = {
         confirmButtonColor: "#5165f4",
       }).then((result) => {
         if (result.isConfirmed) {
-          FavoriteRestaurantIdb.deleteRestaurant(this._restaurant.id).then(
-            () => {
+          this._favoriteRestaurant
+            .deleteRestaurant(this._restaurant.id)
+            .then(() => {
               Swal.fire({
                 icon: "success",
                 title: "Deleted from Favorite",
                 confirmButtonText: "Ok",
               });
-            }
-          );
+            });
         }
+        this._renderButton();
       });
-      this._renderButton();
     });
   },
 };

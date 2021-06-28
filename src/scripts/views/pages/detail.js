@@ -1,8 +1,9 @@
 /* eslint-disable no-return-await */
 /* eslint-disable no-underscore-dangle */
-import RestaurantAPI from '../../data/restaurant-source';
-import UrlParser from '../../routes/url-parser';
-import LikeButtonInitiator from '../../utils/like-button-initiator';
+import RestaurantAPI from "../../data/restaurant-source";
+import UrlParser from "../../routes/url-parser";
+import LikeButtonInitiator from "../../utils/like-button-initiator";
+import RestauraFavoriteRestaurantIdb from "../../data/favorite-restaurants-idb";
 
 const Detail = {
   async render() {
@@ -11,18 +12,19 @@ const Detail = {
   },
 
   async afterRender() {
-    const restaurantContainer = document.querySelector('#detailRestaurant');
-    const restaurantHeader = document.querySelector('hero-section');
+    const restaurantContainer = document.querySelector("#detailRestaurant");
+    const restaurantHeader = document.querySelector("hero-section");
     restaurantHeader.remove();
-    const skeletonDetail = document.createElement('skeleton-detail');
+    const skeletonDetail = document.createElement("skeleton-detail");
     restaurantContainer.appendChild(skeletonDetail);
     const detailInfo = await this.restaurantApi();
-    restaurantContainer.innerHTML = '';
+    restaurantContainer.innerHTML = "";
     this._renderBreadcrumb(restaurantContainer, detailInfo);
-    const detailRestaurant = document.createElement('restaurant-detail');
+    const detailRestaurant = document.createElement("restaurant-detail");
     detailRestaurant.restaurant = detailInfo.restaurant;
     restaurantContainer.appendChild(detailRestaurant);
     LikeButtonInitiator.init({
+      favoriteRestaurant: RestauraFavoriteRestaurantIdb,
       restaurant: {
         id: detailInfo.restaurant.id,
         name: detailInfo.restaurant.name,
@@ -39,7 +41,7 @@ const Detail = {
   },
 
   _renderBreadcrumb(content, detailData) {
-    const breadcrumb = document.createElement('breadcrumb-item');
+    const breadcrumb = document.createElement("breadcrumb-item");
     breadcrumb.restaurant = detailData.restaurant;
     content.appendChild(breadcrumb);
   },
