@@ -14,7 +14,9 @@ const Detail = {
   async afterRender() {
     const restaurantContainer = document.querySelector("#detailRestaurant");
     const restaurantHeader = document.querySelector("hero-section");
-    restaurantHeader.remove();
+    if (restaurantHeader) {
+      restaurantHeader.remove();
+    }
     const skeletonDetail = document.createElement("skeleton-detail");
     restaurantContainer.appendChild(skeletonDetail);
     const detailInfo = await this.restaurantApi();
