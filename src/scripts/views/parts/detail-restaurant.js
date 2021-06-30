@@ -22,81 +22,81 @@ class DetailRestaurant extends HTMLElement {
         
         <div class="detail_img">
         <div class="detail_tag">
-                <rating-star
-                    data-star="${this._restaurant.rating}"
-                ></rating-star>
+  <rating-star
+      data-star="${this._restaurant.rating}"
+  ></rating-star>
         </div>
         <favorite-button></favorite-button>
             <img
-                data- src="${
+  data- src="${
   `${CONFIG.BASE_IMAGE_URL
   }large/${
     this._restaurant.pictureId}`
 }"
-                alt="${this._restaurant.name}" class="lazyload" style="width: 100%; height: 400px"
+  alt="${this._restaurant.name}" class="lazyload" style="width: 100%; height: 400px"
             />
         </div>
         <div class="detail_content">
             <div class="info_wrapper">
-                <h3>${this._restaurant.name}</h3>
-                <h4 classs="detail_address">${this._restaurant.address}, ${this._restaurant.city}</h4>
-                <div class="detail_category">${this._category()}</div>
+  <h3>${this._restaurant.name}</h3>
+  <h4 classs="detail_address">${this._restaurant.address}, ${this._restaurant.city}</h4>
+  <div class="detail_category">${this._category()}</div>
     
-                <div class="detail_description">
-                    <h4>About the Place</h4>
-                    <p>${this._restaurant.description}</p>
-                </div>
+  <div class="detail_description">
+      <h4>About the Place</h4>
+      <p>${this._restaurant.description}</p>
+  </div>
             </div>
     
             <div class="tab_wrapper">
-                <div class="button_wrapper">
-                    <button
-                        class="tab-button active"
-                        style="border-top-left-radius: 10px"
-                        data-id="menus"
-                    >
-                        Menus
-                    </button>
-                    <button
-                        class="tab-button"
-                        style="border-top-right-radius: 10px"
-                        data-id="reviews"
-                    >
-                        Reviews
-                    </button>
-                </div>
-                <div class="content_wrapper">
-                    <div class="content active" id="menus">
-                        <div class="menus_container">
-                            <div class="Foods">
-                                <h4>Foods:</h4>
-                                <ul>
-                                ${this._restaurant.menus.foods
+  <div class="button_wrapper">
+      <button
+          class="tab-button active"
+          style="border-top-left-radius: 10px"
+          data-id="menus"
+      >
+          Menus
+      </button>
+      <button
+          class="tab-button"
+          style="border-top-right-radius: 10px"
+          data-id="reviews"
+      >
+          Reviews
+      </button>
+  </div>
+  <div class="content_wrapper">
+      <div class="content active" id="menus">
+          <div class="menus_container">
+<div class="Foods">
+    <h4>Foods:</h4>
+    <ul>
+    ${this._restaurant.menus.foods
     .map(
       (food) => `
-                                                              <li>${food.name}</li>
-                                                              `,
+      <li>${food.name}</li>
+      `,
     )
     .join(' ')}
-                                </ul>
-                            </div>
+    </ul>
+</div>
     
-                            <div class="Drinks">
-                                <h4>Drinks:</h4>
-                                <ul>
-                                ${this._restaurant.menus.drinks
+<div class="Drinks">
+    <h4>Drinks:</h4>
+    <ul>
+    ${this._restaurant.menus.drinks
     .map(
       (drink) => `
-                                <li>${drink.name}</li>
-                                `,
+    <li>${drink.name}</li>
+    `,
     )
     .join(' ')}
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                           ${this._review()}
-                </div>
+    </ul>
+</div>
+          </div>
+      </div>
+             ${this._review()}
+  </div>
             </div>
         </div>
     </div>
@@ -175,26 +175,24 @@ class DetailRestaurant extends HTMLElement {
       dateStyle: 'medium',
     }).format(d);
     return `
-        <div class="content" id="reviews">
-                      <div class="reviews_wrapper">
-                      <ul class="reviewlist_wrapper">
-                      </ul>
-                      <hr />
-                      </div>
-                      <h3>Add New Review</h3>
-                      <form id="review_form" method="post" action="/">
-                      <div class="form_input">
-                      <input type="hidden" name="id" value="${this._restaurant.id}" />
-                      <input type="hidden" name="date" value="${dtf}" />
-                      <label for="name">Name</label>
-    <input type="text" id="name" name="name" placeholder="Your name.." required>
-
-    <label for="review">Review</label>
-    <textarea type="text" id="review" name="review" placeholder="Your Review.." required></textarea>
-                      </div>
-                      <button id="formButton">Submit</button>
-                      </form>
-                    </div>
+  <div class="content" id="reviews">
+   <div class="reviews_wrapper">
+     <ul class="reviewlist_wrapper"></ul>
+      <hr />
+      </div>
+        <h3>Add New Review</h3>
+          <form id="review_form" method="post" action="/">
+                <div class="form_input">
+                  <input type="hidden" name="id" value="${this._restaurant.id}" />
+                  <input type="hidden" name="date" value="${dtf}" />
+                  <label for="name">Name</label>
+                  <input type="text" id="name" name="name" placeholder="Your name.." required>
+                  <label for="review">Review</label>
+                  <textarea type="text" id="review" name="review" placeholder="Your Review.." required></textarea>
+                </div>
+              <button id="formButton">Submit</button>
+          </form>
+    </div>
         `;
   }
 
