@@ -15,6 +15,11 @@ const Favorite = {
     const restaurantTitle = document.querySelector('#list');
     const restaurantCards = document.createElement('restaurant-item');
     const skeletonCard = document.createElement('skeleton-card');
+    const restaurantHeader = document.querySelector('hero-section');
+
+    if (restaurantHeader === null) {
+      document.querySelector('.hero').appendChild(document.createElement('hero-section'));
+    }
     for (let i = 0; i < 20; i++) {
       restaurantsContainer.appendChild(skeletonCard.cloneNode(true));
     }
