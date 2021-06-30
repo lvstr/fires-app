@@ -1,0 +1,19 @@
+skeleton-card {
+    width: 100%;
+    padding: 1rem;
+  }
+
+/* Responsive */
+@media (min-width: 496px) {
+    
+    skeleton-card {
+      width: 50%;
+    }
+  }
+  
+  @media (min-width: 56rem) {
+    
+    skeleton-card {
+      width: 33.3333%;
+    }
+  }

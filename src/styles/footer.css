@@ -1,0 +1,125 @@
+footer-section {
+  width: 100%;
+  background: #5165f4;
+  display: block;
+  margin-top: 32px;
+}
+
+.inner-footer {
+  width: 95%;
+  margin: auto;
+  padding: 30px 10px;
+  display: flex;
+  flex-wrap: wrap;
+  box-sizing: border-box;
+  justify-content: center;
+}
+.inner-footer * {
+  color: white;
+}
+
+.footer-items h1,
+h2 {
+  font-family: "BaloBhai2", sans-serif;
+}
+.footer-items {
+  width: 25%;
+  padding: 10px 20px;
+  box-sizing: border-box;
+}
+
+.footer-items h2 {
+  font-size: 16px;
+  text-align: justify;
+  line-height: 25px;
+  margin-bottom: 20px;
+}
+.footer-items h3 {
+  font-size: 1.33rem;
+}
+
+.border1 {
+  height: 3px;
+  width: 40px;
+  background: #f8ce0b;
+  color: #f8ce0b;
+  background-color: #f8ce0b;
+  border: 0px;
+}
+
+footer-section ul {
+  list-style: none;
+  font-size: 15px;
+  letter-spacing: 0.5px;
+}
+
+footer-section ul a {
+  display: inline-block;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  transition: 0.3s;
+  min-width: 44px;
+  min-height: 44px;
+}
+
+footer-section ul a:hover {
+  color: #f8ce0b;
+}
+
+footer-section ul li {
+  margin: 10px 0;
+  min-width: 44px;
+  min-height: 44px;
+}
+
+footer-section li i {
+  margin-right: 20px;
+}
+
+.social-media {
+  width: 100%;
+  text-align: center;
+  font-size: 20px;
+}
+
+.social-media a {
+  text-decoration: none;
+}
+
+.social-media i {
+  min-width: 44px;
+  min-height: 44px;
+  margin: 20px 10px;
+  padding: 4px;
+  transition: 0.5s;
+}
+
+.social-media i:hover {
+  transform: scale(1.5);
+}
+
+.footer-bottom {
+  padding: 10px;
+  background: #5165f4;
+  font-size: 12px;
+  text-align: center;
+}
+
+.footer-bottom p {
+  color: white;
+}
+
+/* Responsive */
+
+@media screen and (max-width: 1275px) {
+  .footer-items {
+    width: 50%;
+  }
+}
+
+@media screen and (max-width: 660px) {
+  .footer-items {
+    width: 100%;
+  }
+}

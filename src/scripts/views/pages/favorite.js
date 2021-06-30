@@ -1,3 +1,4 @@
+/* eslint-disable no-plusplus */
 /* eslint-disable no-unused-expressions */
 import FavoriteRestaurantIdb from '../../data/favorite-restaurants-idb';
 
@@ -13,12 +14,15 @@ const Favorite = {
     const restaurantsContainer = document.querySelector('#restoList');
     const restaurantTitle = document.querySelector('#list');
     const restaurantCards = document.createElement('restaurant-item');
-    restaurantsContainer.classList.add('loader');
+    const skeletonCard = document.createElement('skeleton-card');
+    for (let i = 0; i < 20; i++) {
+      restaurantsContainer.appendChild(skeletonCard.cloneNode(true));
+    }
     const restaurants = await FavoriteRestaurantIdb.getAllRestaurants();
+    restaurantsContainer.innerHTML = '';
     restaurantTitle.textContent = restaurants.length === 0
       ? "There's no favorite Restaurant"
       : 'Favorite Restaurants List';
-    restaurantsContainer.classList.remove('loader');
     restaurants.forEach((restaurant) => {
       restaurantCards.restaurant = restaurant;
       restaurantsContainer.appendChild(restaurantCards.cloneNode(true));

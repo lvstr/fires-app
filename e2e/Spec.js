@@ -70,3 +70,23 @@ Scenario('Unliking once Restaurant', async ({ I }) => {
   I.seeElement('#list');
   I.see("There's no favorite Restaurant", '#list');
 });
+
+Scenario('Add a Comment', ({ I }) => {
+  I.amOnPage('/');
+  I.seeElement('.card_content a');
+
+  I.click(locate('.card_content a').first());
+  I.scrollPageToTop();
+
+  I.seeElement('.button_wrapper');
+  I.seeElement('[data-id="reviews"]');
+  I.click('[data-id="reviews"]');
+
+  I.seeElement('.reviews_wrapper');
+  I.fillField('name', 'John Doe');
+  I.fillField('review', 'Hi, My name is John Doe');
+
+  I.click('#formButton');
+  I.seeElement('.swal2-confirm');
+  I.click('.swal2-confirm');
+});

@@ -3,7 +3,6 @@
 /* eslint-disable no-restricted-syntax */
 import 'regenerator-runtime';
 import '../styles/main.css';
-import '../styles/menu.css';
 import './views/index';
 import 'css-skeletons';
 import '../styles/fontawesome/css/font-awesome.min.css';

@@ -2,3 +2,4 @@ node_modules
 tes.html
 plain.txt
 dist/
+.vscode

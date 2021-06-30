@@ -1,0 +1,48 @@
+.breadcrumb-container {
+  display: none;
+}
+
+/* Responsive */
+@media only screen and (min-width: 720px) {
+  .breadcrumb-container {
+    background-color: #f0f0f0;
+    display: block;
+  }
+  .cd-breadcrumb {
+    width: 90%;
+    margin: 0 auto;
+  }
+
+  .cd-breadcrumb a {
+    display: block;
+    min-width: 44px;
+    min-height: 44px;
+    padding-top: 15px;
+  }
+  .cd-breadcrumb::after {
+    clear: both;
+    content: "";
+    display: table;
+  }
+  .cd-breadcrumb li {
+    display: inline-block;
+  }
+  .cd-breadcrumb li::after {
+    display: inline-block;
+    content: "/";
+    font-size: 1rem;
+    margin: 0 0.7em;
+  }
+  .cd-breadcrumb li:last-of-type::after {
+    display: none;
+  }
+  .cd-breadcrumb li > * {
+    display: inline-block;
+    font-size: 1rem;
+    color: #001ffb;
+    text-decoration: none;
+  }
+  .cd-breadcrumb li.current > * {
+    color: #40464e;
+  }
+}
