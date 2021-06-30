@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-expressions */
-import FavoriteRestaurantIdb from "../../data/favorite-restaurants-idb";
+import FavoriteRestaurantIdb from '../../data/favorite-restaurants-idb';
 
 const Favorite = {
   async render() {
@@ -10,16 +10,15 @@ const Favorite = {
   },
 
   async afterRender() {
-    const restaurantsContainer = document.querySelector("#restoList");
-    const restaurantTitle = document.querySelector("#list");
-    const restaurantCards = document.createElement("restaurant-item");
-    restaurantsContainer.classList.add("loader");
+    const restaurantsContainer = document.querySelector('#restoList');
+    const restaurantTitle = document.querySelector('#list');
+    const restaurantCards = document.createElement('restaurant-item');
+    restaurantsContainer.classList.add('loader');
     const restaurants = await FavoriteRestaurantIdb.getAllRestaurants();
-    restaurantTitle.textContent =
-      restaurants.length === 0
-        ? "There's no favorite Restaurant"
-        : "Favorite Restaurants List";
-    restaurantsContainer.classList.remove("loader");
+    restaurantTitle.textContent = restaurants.length === 0
+      ? "There's no favorite Restaurant"
+      : 'Favorite Restaurants List';
+    restaurantsContainer.classList.remove('loader');
     restaurants.forEach((restaurant) => {
       restaurantCards.restaurant = restaurant;
       restaurantsContainer.appendChild(restaurantCards.cloneNode(true));

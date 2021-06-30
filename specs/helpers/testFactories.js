@@ -1,5 +1,6 @@
-import LikeButtonInitiator from "../../src/scripts/utils/like-button-initiator";
-import FavoriteRestaurantIdb from " ../../../src/scripts/data/favorite-restaurants-idb";
+/* eslint-disable import/prefer-default-export */
+import LikeButtonInitiator from '../../src/scripts/utils/like-button-initiator';
+import FavoriteRestaurantIdb from ' ../../../src/scripts/data/favorite-restaurants-idb';
 
 const createLikeButtonPresenterWithRestaurant = async (restaurant) => {
   await LikeButtonInitiator.init({

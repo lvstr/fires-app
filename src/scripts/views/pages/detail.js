@@ -1,9 +1,10 @@
+/* eslint-disable no-param-reassign */
 /* eslint-disable no-return-await */
 /* eslint-disable no-underscore-dangle */
-import RestaurantAPI from "../../data/restaurant-source";
-import UrlParser from "../../routes/url-parser";
-import LikeButtonInitiator from "../../utils/like-button-initiator";
-import RestauraFavoriteRestaurantIdb from "../../data/favorite-restaurants-idb";
+import RestaurantAPI from '../../data/restaurant-source';
+import UrlParser from '../../routes/url-parser';
+import LikeButtonInitiator from '../../utils/like-button-initiator';
+import RestauraFavoriteRestaurantIdb from '../../data/favorite-restaurants-idb';
 
 const Detail = {
   async render() {
@@ -12,8 +13,8 @@ const Detail = {
   },
 
   async afterRender() {
-    const restaurantContainer = document.querySelector("#detailRestaurant");
-    const restaurantHeader = document.querySelector("hero-section");
+    const restaurantContainer = document.querySelector('#detailRestaurant');
+    const restaurantHeader = document.querySelector('hero-section');
     if (restaurantHeader) {
       restaurantHeader.remove();
     }
@@ -23,7 +24,7 @@ const Detail = {
 
   _renderLikeButton(container, data) {
     this._renderBreadcrumb(container, data);
-    const detailRestaurant = document.createElement("restaurant-detail");
+    const detailRestaurant = document.createElement('restaurant-detail');
     detailRestaurant.restaurant = data.restaurant;
     container.appendChild(detailRestaurant);
     LikeButtonInitiator.init({
@@ -44,15 +45,15 @@ const Detail = {
   },
 
   async _renderSkeletonLoading(container) {
-    const skeletonDetail = document.createElement("skeleton-detail");
+    const skeletonDetail = document.createElement('skeleton-detail');
     container.appendChild(skeletonDetail);
     const API = await this.restaurantApi();
-    container.innerHTML = "";
+    container.innerHTML = '';
     this._renderLikeButton(container, API);
   },
 
   _renderBreadcrumb(content, data) {
-    const breadcrumb = document.createElement("breadcrumb-item");
+    const breadcrumb = document.createElement('breadcrumb-item');
     breadcrumb.restaurant = data.restaurant;
     content.appendChild(breadcrumb);
   },

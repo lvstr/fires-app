@@ -1,7 +1,7 @@
 /* eslint-disable no-underscore-dangle */
-import CONFIG from "../../globals/config";
-import "lazysizes";
-import "lazysizes/plugins/parent-fit/ls.parent-fit";
+import CONFIG from '../../globals/config';
+import 'lazysizes';
+import 'lazysizes/plugins/parent-fit/ls.parent-fit';
 
 class RestaurantCard extends HTMLElement {
   /**
@@ -20,8 +20,8 @@ class RestaurantCard extends HTMLElement {
         </div>
         <figure class="card_image">
         <img data-src="${`${CONFIG.BASE_IMAGE_URL}small/${this._restaurant.pictureId}`}" alt="${
-      this._restaurant.name
-    }" width="100%" height="230px" class="lazyload"/>
+  this._restaurant.name
+}" width="100%" height="230px" class="lazyload"/>
         <div class="overlay">
         <a
             href="/#/detail/${this._restaurant.id}"
@@ -34,16 +34,16 @@ class RestaurantCard extends HTMLElement {
           </figure>
           <div class="card_content">
             <a class="card_title" href="/#/detail/${this._restaurant.id}">${
-      this._restaurant.name
-    }</a>
+  this._restaurant.name
+}</a>
             <h3 class="city">${this._restaurant.city}</h3>
             <p class="card_text">${this._restaurant.description
-              .split(" ", 20)
-              .join(" ")}...</p>
+    .split(' ', 20)
+    .join(' ')}...</p>
           </div>
         </div>
         `;
   }
 }
 
-customElements.define("restaurant-item", RestaurantCard);
+customElements.define('restaurant-item', RestaurantCard);

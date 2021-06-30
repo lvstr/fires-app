@@ -1,41 +1,44 @@
-import "regenerator-runtime";
-import "../styles/main.css";
-import "../styles/menu.css";
-import "./views/index";
-import "css-skeletons";
-import "../styles/fontawesome/css/font-awesome.min.css";
-import swRegister from "./utils/sw-register";
+/* eslint-disable no-restricted-globals */
+/* eslint-disable no-use-before-define */
+/* eslint-disable no-restricted-syntax */
+import 'regenerator-runtime';
+import '../styles/main.css';
+import '../styles/menu.css';
+import './views/index';
+import 'css-skeletons';
+import '../styles/fontawesome/css/font-awesome.min.css';
+import swRegister from './utils/sw-register';
 
-import App from "./views/app";
+import App from './views/app';
 
 const app = new App({
-  button: document.querySelector(".menu-toggle"),
-  drawer: document.querySelector(".nav"),
-  content: document.querySelector(".app"),
+  button: document.querySelector('.menu-toggle'),
+  drawer: document.querySelector('.nav'),
+  content: document.querySelector('.app'),
 });
 
-window.addEventListener("hashchange", () => {
+window.addEventListener('hashchange', () => {
   app.renderPage();
 });
 
-window.addEventListener("load", () => {
+window.addEventListener('load', () => {
   app.renderPage();
 });
 
-const links = document.querySelectorAll("hero-section a, footer-section a");
+const links = document.querySelectorAll('hero-section a, footer-section a');
 
 for (const link of links) {
-  link.addEventListener("click", clickHandler);
+  link.addEventListener('click', clickHandler);
 }
 
 function clickHandler(e) {
   e.preventDefault();
-  const href = this.getAttribute("href");
-  const offsetTop = document.querySelector(href).offsetTop;
+  const href = this.getAttribute('href');
+  const { offsetTop } = document.querySelector(href);
 
   scroll({
     top: offsetTop,
-    behavior: "smooth",
+    behavior: 'smooth',
   });
 }
 
