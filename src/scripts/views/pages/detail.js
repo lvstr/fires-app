@@ -17,34 +17,43 @@ const Detail = {
     if (restaurantHeader) {
       restaurantHeader.remove();
     }
-    const skeletonDetail = document.createElement("skeleton-detail");
-    restaurantContainer.appendChild(skeletonDetail);
-    const detailInfo = await this.restaurantApi();
-    restaurantContainer.innerHTML = "";
-    this._renderBreadcrumb(restaurantContainer, detailInfo);
+
+    this._renderSkeletonLoading(restaurantContainer);
+  },
+
+  _renderLikeButton(container, data) {
+    this._renderBreadcrumb(container, data);
     const detailRestaurant = document.createElement("restaurant-detail");
-    detailRestaurant.restaurant = detailInfo.restaurant;
-    restaurantContainer.appendChild(detailRestaurant);
+    detailRestaurant.restaurant = data.restaurant;
+    container.appendChild(detailRestaurant);
     LikeButtonInitiator.init({
       favoriteRestaurant: RestauraFavoriteRestaurantIdb,
       restaurant: {
-        id: detailInfo.restaurant.id,
-        name: detailInfo.restaurant.name,
-        pictureId: detailInfo.restaurant.pictureId,
-        description: detailInfo.restaurant.description,
-        address: detailInfo.restaurant.address,
-        city: detailInfo.restaurant.city,
-        rating: detailInfo.restaurant.rating,
-        categories: detailInfo.restaurant.categories,
-        menus: detailInfo.restaurant.menus,
-        customerReviews: detailInfo.restaurant.customerReviews,
+        id: data.restaurant.id,
+        name: data.restaurant.name,
+        pictureId: data.restaurant.pictureId,
+        description: data.restaurant.description,
+        address: data.restaurant.address,
+        city: data.restaurant.city,
+        rating: data.restaurant.rating,
+        categories: data.restaurant.categories,
+        menus: data.restaurant.menus,
+        customerReviews: data.restaurant.customerReviews,
       },
     });
   },
 
-  _renderBreadcrumb(content, detailData) {
+  async _renderSkeletonLoading(container) {
+    const skeletonDetail = document.createElement("skeleton-detail");
+    container.appendChild(skeletonDetail);
+    const API = await this.restaurantApi();
+    container.innerHTML = "";
+    this._renderLikeButton(container, API);
+  },
+
+  _renderBreadcrumb(content, data) {
     const breadcrumb = document.createElement("breadcrumb-item");
-    breadcrumb.restaurant = detailData.restaurant;
+    breadcrumb.restaurant = data.restaurant;
     content.appendChild(breadcrumb);
   },
 
