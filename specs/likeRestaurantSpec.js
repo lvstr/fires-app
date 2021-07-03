@@ -12,7 +12,6 @@ const addLikeButton = () => {
 describe('Liking A Restaurant', () => {
   beforeEach(async () => {
     addLikeButton();
-    await FavoriteRestaurantIdb.putRestaurant({ id: 1 });
   });
 
   afterEach(async () => {
@@ -30,15 +29,15 @@ describe('Liking A Restaurant', () => {
   it('should be able to like the restaurant', async () => {
     await TestFactories.createLikeButtonPresenterWithRestaurant({ id: 1 });
     document.querySelector('favorite-button').dispatchEvent(new Event('click'));
+    await document.querySelector('.swal2-confirm').dispatchEvent(new Event('click'));
     expect(await FavoriteRestaurantIdb.getRestaurant(1)).toEqual({ id: 1 });
   });
   it('should not add a Restaurant again when its already liked', async () => {
     await TestFactories.createLikeButtonPresenterWithRestaurant({ id: 1 });
 
     document.querySelector('favorite-button').dispatchEvent(new Event('click'));
-    expect(await FavoriteRestaurantIdb.getAllRestaurants()).toEqual([
-      { id: 1 },
-    ]);
+    await document.querySelector('.swal2-confirm').dispatchEvent(new Event('click'));
+    expect(await FavoriteRestaurantIdb.getAllRestaurants()).toEqual([{ id: 1 }]);
   });
 
   it('should not add a restaurant when it has no id', async () => {
@@ -52,7 +51,6 @@ describe('Liking A Restaurant', () => {
   it('should not throw error if the unliked movie is not in the list', async () => {
     await TestFactories.createLikeButtonPresenterWithRestaurant({ id: 1 });
     await FavoriteRestaurantIdb.deleteRestaurant(1);
-    document.querySelector('[liked="true"]').dispatchEvent(new Event('click'));
 
     expect(await FavoriteRestaurantIdb.getAllRestaurants()).toEqual([]);
   });
